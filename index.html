@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT VOICE | DEFINITION</title>
+    <style>
+        :root {
+            --glow-color: #00ff41;
+            --alert-color: #ff3131;
+            --bg-color: #020a02;
+            --panel-bg: rgba(0, 15, 0, 0.9);
+            --domain-color: #00e1ff;
+            --warning-gold: #ffcc00;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--glow-color);
+            font-family: 'Segoe UI', 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-transform: uppercase;
+        }
+
+        .crt-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        #terminal-container {
+            width: 95%;
+            max-width: 1100px;
+            height: 92vh;
+            border: 2px solid var(--glow-color);
+            background: var(--panel-bg);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 50px rgba(0, 255, 65, 0.1);
+            position: relative;
+            padding: 20px;
+        }
+
+        .lab-header {
+            text-align: center;
+            border-bottom: 1px solid var(--glow-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .lab-header h1 {
+            color: var(--alert-color);
+            font-size: 2.5em;
+            margin: 0;
+            letter-spacing: 12px;
+            text-shadow: 0 0 15px var(--alert-color);
+        }
+
+        .domain-tag {
+            color: var(--domain-color);
+            font-size: 1.2em;
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px var(--domain-color);
+        }
+
+        .system-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid var(--glow-color);
+            color: var(--glow-color);
+            padding: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+            flex: 1;
+            clip-path: polygon(5% 0, 100% 0, 95% 100%, 0% 100%);
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: var(--glow-color);
+            color: var(--bg-color);
+        }
+
+        #viewport {
+            flex-grow: 1;
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            background: rgba(0, 5, 0, 0.8);
+            padding: 25px;
+            overflow-y: auto;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Acronym Box */
+        .acronym-box {
+            border: 1px solid var(--domain-color);
+            padding: 20px;
+            margin: 20px 0;
+            background: rgba(0, 225, 255, 0.05);
+        }
+
+        .acronym-letter {
+            color: var(--domain-color);
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        h2 { border-left: 4px solid var(--domain-color); padding-left: 15px; color: #fff; }
+        .warning { color: var(--warning-gold); }
+
+    </style>
+</head>
+<body>
+
+<div class="crt-overlay"></div>
+
+<div id="terminal-container">
+    <div class="lab-header">
+        <h1>MADLABZ LABORATORY</h1>
+        <span class="domain-tag">PROJECTVOICE.WORLD</span>
+    </div>
+
+    <div class="system-header">
+        <div>DEPT: <span style="color:#fff">INTERSTELLAR COMMUNICATIONS</span></div>
+        <div class="warning">[ STATUS: FUNDING PHASE ]</div>
+        <div>UPLINK: <span style="color:var(--alert-color)">STANDBY</span></div>
+    </div>
+
+    <nav>
+        <button class="nav-btn active" onclick="openTab(event, 'mission')">01. THE MISSION</button>
+        <button class="nav-btn" onclick="openTab(event, 'objective')">02. ROADMAP</button>
+        <button class="nav-btn" onclick="openTab(event, 'infra')">03. HARDWARE</button>
+        <button class="nav-btn" onclick="openTab(event, 'capsule')">04. LEGACY</button>
+    </nav>
+
+    <div id="viewport">
+        <div id="mission" class="tab-content active">
+            <h2>IDENTIFICATION: V.O.I.C.E.</h2>
+            <p>Project V.O.I.C.E. is the flagship initiative of MADLABZ Laboratory. To understand our goal, one must understand the name:</p>
+            
+            <div class="acronym-box">
+                <p><span class="acronym-letter">V</span> AST</p>
+                <p><span class="acronym-letter">O</span> UTREACH</p>
+                <p><span class="acronym-letter">I</span> NTERSTELLAR</p>
+                <p><span class="acronym-letter">C</span> OMMUNICATION</p>
+                <p><span class="acronym-letter">E</span> FFORT</p>
+            </div>
+
+            <p>Our purpose is to consolidate the diverse messages of Earth into a singular, powerful 2.4 GHz directional stream. This is more than a signal; it is the "Voice" of our planet speaking into the cosmic silence.</p>
+        </div>
+
+        <div id="objective" class="tab-content">
+            <h2>DEVELOPMENT ROADMAP</h2>
+            <p>Current phase: <strong>Capital Acquisition</strong>.</p>
+            <ul>
+                <li><strong>STEP 1:</strong> Secure funding for S-Band industrial transmitters.</li>
+                <li><strong>STEP 2:</strong> Assemble the Phased Array Grid.</li>
+                <li><strong>STEP 3:</strong> Begin 2.4 GHz Directional Beam operations.</li>
+            </ul>
+        </div>
+
+        <div id="infra" class="tab-content">
+            <h2>SPECIFICATIONS</h2>
+            <ul>
+                <li><strong>BANDWIDTH:</strong> S-Band</li>
+                <li><strong>CENTER FREQUENCY:</strong> 2.4 GHz</li>
+                <li><strong>PROPAGATION:</strong> High-Gain Directional Beam</li>
+                <li><strong>MODULATION:</strong> Digital Binary Legacy Protocol</li>
+            </ul>
+        </div>
+
+        <div id="capsule" class="tab-content">
+            <h2>THE KINETIC ARCHIVE</h2>
+            <p>V.O.I.C.E. is designed to be a message in a bottle that never stops moving. Once we leave the "Funding Phase," your contributions will be encoded into light and sent past the edge of our solar system.</p>
+        </div>
+    </div>
+
+    <div style="text-align: center; font-size: 10px; margin-top: 20px; opacity: 0.6; color: var(--warning-gold);">
+        NOTICE: PROJECTVOICE.WORLD IS CURRENTLY SEEKING INVESTMENT. BROADCAST IS NOT YET LIVE.
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, navbtns;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+            tabcontent[i].classList.remove("active");
+        }
+        navbtns = document.getElementsByClassName("nav-btn");
+        for (i = 0; i < navbtns.length; i++) {
+            navbtns[i].className = navbtns[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
